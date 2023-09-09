@@ -10,7 +10,7 @@
 .left-content{
     width: 60%;
     height: 800px;
-    background-image: url(Group\ 3.png);
+    background-image: url(../images/Group\ 3.png);
 }
 
 .left-content .main{
@@ -36,6 +36,7 @@
     background-color: #0575E6;
     color: #fff;
     border-radius: 50px;
+    cursor: pointer;
 }
 
 .right-content{
@@ -76,14 +77,15 @@
     border-radius: 20px;
 }
 
-.right-content .link a{
+.right-content .link p{
     color: #ccc;
     text-decoration: none;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
 }
 
-.link a span{
+.link a{
     color:#0575E6;
+    text-decoration: none;
 }
 
