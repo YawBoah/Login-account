@@ -7,13 +7,13 @@
     display: flex;
 }
 
-.right-content{
+.left-content{
     width: 60%;
     height: 800px;
     background-image: url(Group\ 3.png);
 }
 
-.right-content .main{
+.left-content .main{
     margin-left: 30%;
     margin-top: 50%;
 }
@@ -38,7 +38,44 @@
     border-radius: 50px;
 }
 
-.left-content{
+.right-content{
     margin-left: 10%;
     margin-top: 20%;
 }
+
+.right-content p{
+    margin-bottom: 40px;
+}
+
+.right-content .one{
+    border-radius: 20px;
+    border:1px solid #ccc;
+    width: 200px;
+    height: 50px;
+}
+
+.one input{
+    border: none;
+    color: #ccc;
+}
+
+.fa-solid, .fa-regular{
+    margin-left: 11px;
+    color: #ccc;
+}
+
+.right-content button{
+    background-color: #0575E6;
+    color: #fff;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+}
+
+.right-content a{
+    margin-left: 40px;
+    color: #ccc;
+    text-decoration: none;
+}
+
