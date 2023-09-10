@@ -25,11 +25,23 @@ if (isset($_SESSION["user"])) {
     <?php
         if (isset($_POST["login"])) {
            $email = $_POST["email"];
-           $password = $_POST["password"];
+           $password = $_POST["pwd"];
+           $errors = array();
+           $hasError = false;
+           if(empty($password)){
+              array_push($errors, "Enter your password");
+              $hasError = true;
+            }
+            if(empty($email)){
+              array_push($errors, "Enter your email");
+              $hasError = true;
+           }
+           if(!$hasError){
             require_once "../database.php";
-            $sql = "SELECT * FROM users WHERE email = '$email'";
-            $result = mysqli_query($conn, $sql);
+            $sql = "SELECT * FROM user WHERE email = '$email'";
+            $result = mysqli_query($link, $sql);
             $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            // var_dump($user);
             if ($user) {
                 if (password_verify($password, $user["password"])) {
                     session_start();
@@ -37,11 +49,12 @@ if (isset($_SESSION["user"])) {
                     header("Location: index.php");
                     die();
                 }else{
-                    echo "<div class='alert alert-danger'>Password does not match</div>";
-                }
-            }else{
-                echo "<div class='alert alert-danger'>Email does not match</div>";
+                   array_push($errors, "Password does not match");
+                  }
+                }else{
+                array_push($errors, "Email does not match");
             }
+           }
         }
         ?>
 
@@ -69,11 +82,11 @@ if (isset($_SESSION["user"])) {
           <div class="one">
             <br />
             <i class="fa-solid fa-lock"></i>
-            <input type="password" name="password " placeholder="Password" />
+            <input type="password" name="pwd" placeholder="Password" />
           </div>
           <br />
   
-          <button name="submit">Login</button>
+          <button name="login">Login</button>
           </form>
           <br />
           <br />
