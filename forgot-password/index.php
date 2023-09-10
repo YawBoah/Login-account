@@ -18,25 +18,32 @@
         </div>
     
         <div class="right-content">
-        <h1>Hello! <br>Forgot Password</h1>
-        <br>
-        
-        <div class="one">
-            <br>
-            <i class="fa-regular fa-envelope"></i>
-            <input type="text" placeholder="Email Address">
-        </div>
-    
-         <br>
-       
-    
-         <button>Reset Password</button>
-         <br>
-         <br>
-         
-         <div class="link">
-            <p>Remember password? <a href="../login/">Login</a></p>
-        </div>
+            <div class="inner-content">
+                    <br><br>
+                    <br><br>
+                    <br><br>
+                    <br><br><br><br><br><br>
+            <h1>Hello! <br>Forgot Password</h1>
+                <br>
+                
+                <div class="one">
+                    <br>
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="text" placeholder="Email Address">
+                </div>
+            
+                 <br>
+               
+            
+                 <button>Reset Password</button>
+                 <br>
+                 <br>
+                 
+                 <div class="link">
+                    <p>Remember password? <a href="../login/">Login</a></p>
+                </div>
+
+            </div>
        
     
         </div>

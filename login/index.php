@@ -54,32 +54,34 @@ if (isset($_SESSION["user"])) {
       </div>
 
       <div class="right-content">
-        <h1>Hello Again</h1>
-        <p>Welcome back!</p>
-
-        <form action="" method="post">
-        <div class="one">
+        <div class="inner-content">
+          <h1>Hello Again</h1>
+          <p>Welcome back!</p>
+  
+          <form action="" method="post">
+          <div class="one">
+            <br />
+            <i class="fa-regular fa-envelope"></i>
+            <input type="text" name="email" placeholder="Email Address" />
+          </div>
+  
           <br />
-          <i class="fa-regular fa-envelope"></i>
-          <input type="text" name="email" placeholder="Email Address" />
-        </div>
-
-        <br />
-        <div class="one">
+          <div class="one">
+            <br />
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" name="password " placeholder="Password" />
+          </div>
           <br />
-          <i class="fa-solid fa-lock"></i>
-          <input type="password" name="password " placeholder="Password" />
-        </div>
-        <br />
-
-        <button name="submit">Login</button>
-        </form>
-        <br />
-        <br />
-
-        <div class="link">
-          <a href="..//forgot-password/">Forgot password</a>
-          <p>New here? <a href="..//signup/">Sign Up</a></p>
+  
+          <button name="submit">Login</button>
+          </form>
+          <br />
+          <br />
+  
+          <div class="link">
+            <a href="..//forgot-password/">Forgot password</a>
+            <p>New here? <a href="..//signup/">Sign Up</a></p>
+          </div>
         </div>
       </div>
     </div>

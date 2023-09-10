@@ -54,7 +54,7 @@ if (isset($_POST["submit"])) {
     if ($prepareStmt) {
       mysqli_stmt_bind_param($stmt, "sss", $fullname, $email, $passwordHash);
       mysqli_stmt_execute($stmt);
-      echo "<script></script>";
+      echo "<script>alert('You are registered successfully.')</script>";
     } else {
       die("Something went wrong");
     }
@@ -72,15 +72,14 @@ if (isset($_POST["submit"])) {
 
       <div class="right-content">
         <div class="inner-content">
-          
-        <?php 
+         <?php 
+         $errors = [];
           if(count($errors) > 0){
             foreach ($errors as $error) {
               echo "<div class='alert alert-danger'>" . $error . "</div>";
             }
           }
-        ?>
-        <br>
+        ?> 
         <h1>Hello!</h1>
         <p>Sign Up to Get Started</p>
         <form action="" method="post">
