@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION["user"])) {
+   header("Location: index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +23,46 @@
   </head>
   <body>
     <div class="content">
+
+    <?php 
+if (isset($_POST["submit"])) {
+  $fullname = $_POST["fullname"];
+  $email = $_POST["email"];
+  $password = $_POST["password"];  
+
+  $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+  $errors = array();
+  if (empty($fullname) OR empty($email) OR empty($password)){
+    array_push($errors, "All fields are required"); 
+  }
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    array_push($errors, "Email is not valid");
+  }
+  if(strlen($password) < 8){
+    array_push($errors, "Password must be at least 8 characters long");
+  }
+
+  if (count($errors) > 0) {
+    foreach ($errors as $error) {
+      echo "<div class='alert alert-danger'>" . $error . "</div>";
+    }
+  } else {
+    require_once "../signup/database.php";
+    $sql = "INSERT INTO user (full_name, email, password) VALUES (?, ?, ?)";
+    $stmt = mysqli_stmt_init($link);
+    $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
+    if ($prepareStmt) {
+      mysqli_stmt_bind_param($stmt, "sss", $fullname, $email, $passwordHash);
+      mysqli_stmt_execute($stmt);
+      echo "<div class='alert alert-success'>You are registered successfully.</div>";
+    } else {
+      die("Something went wrong");
+    }
+  }
+} 
+?>
+
       <div class="left-content">
         <div class="main">
           <h1>GoFinance</h1>
@@ -27,30 +75,33 @@
         <h1>Hello!</h1>
         <p>Sign Up to Get Started</p>
 
-        <div class="one">
+        <form action="" method="post">
+          <div class="one">
+            <br />
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="fullname" placeholder="Full Name" />
+          </div>
           <br />
-          <i class="fa-solid fa-user"></i>
-          <input type="text" placeholder="Full Name" />
-        </div>
-        <br />
-
-        <div class="one">
+  
+          <div class="one">
+            <br />
+            <i class="fa-regular fa-envelope"></i>
+            <input type="text" name="email" placeholder="Email Address" />
+          </div>
+   
           <br />
-          <i class="fa-regular fa-envelope"></i>
-          <input type="text" placeholder="Email Address" />
-        </div>
-
-        <br />
-        <div class="one">
+          <div class="one">
+            <br />
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" />
+          </div>
           <br />
-          <i class="fa-solid fa-lock"></i>
-          <input type="password" placeholder="Password" />
-        </div>
-        <br />
+  
+          <button name="submit" >Register</button>
+          <br />
+          <br />
 
-        <button>Register</button>
-        <br />
-        <br />
+        </form>
 
         <div class="link">
           <!-- <a href="/forgot-password/">Forgot password</a> -->

@@ -1,3 +1,15 @@
+<?php
+
+$error = array();
+if (empty($fullname) OR empty($email) OR empty($password)){
+  array_push($errors,"All fields are required"); 
+}
+if (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
+  array.push($errors, )
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
