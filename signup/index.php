@@ -29,33 +29,32 @@ if (isset($_POST["submit"])) {
   $fullname = $_POST["fullname"];
   $email = $_POST["email"];
   $password = $_POST["password"];  
-
+  $hasError = false;
   $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
   $errors = array();
   if (empty($fullname) OR empty($email) OR empty($password)){
     array_push($errors, "All fields are required"); 
+    $hasError = true;
   }
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     array_push($errors, "Email is not valid");
+    $hasError = true;
   }
   if(strlen($password) < 8){
     array_push($errors, "Password must be at least 8 characters long");
+    $hasError = true;
   }
 
-  if (count($errors) > 0) {
-    foreach ($errors as $error) {
-      echo "<div class='alert alert-danger'>" . $error . "</div>";
-    }
-  } else {
+  if (!$hasError){
     require_once "../database.php";
-    $sql = "INSERT INTO user (full_name, email, password) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO `user`(`name`, `email`, `password`) VALUES (?,?,?)";
     $stmt = mysqli_stmt_init($link);
     $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
     if ($prepareStmt) {
       mysqli_stmt_bind_param($stmt, "sss", $fullname, $email, $passwordHash);
       mysqli_stmt_execute($stmt);
-      echo "<div class='alert alert-success'>You are registered successfully.</div>";
+      echo "<script></script>";
     } else {
       die("Something went wrong");
     }
@@ -72,9 +71,18 @@ if (isset($_POST["submit"])) {
       </div>
 
       <div class="right-content">
+        <div class="inner-content">
+          
+        <?php 
+          if(count($errors) > 0){
+            foreach ($errors as $error) {
+              echo "<div class='alert alert-danger'>" . $error . "</div>";
+            }
+          }
+        ?>
+        <br>
         <h1>Hello!</h1>
         <p>Sign Up to Get Started</p>
-
         <form action="" method="post">
           <div class="one">
             <br />
@@ -106,6 +114,7 @@ if (isset($_POST["submit"])) {
         <div class="link">
           <!-- <a href="/forgot-password/">Forgot password</a> -->
           <p>Already have an account? <a href="../login/">Login</a></p>
+        </div>
         </div>
       </div>
     </div>

@@ -40,10 +40,17 @@
 }
 
 .right-content{
-    margin-left: 10%;
-    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    width: 40%;
+    /* align-items: center; */
 }
-
+.inner-content {
+    margin: 15px auto;
+    /* background-color: blue; */
+    width: 80%;
+}
 .right-content p{
     margin-bottom: 40px;
 }
@@ -87,5 +94,13 @@
 .link a{
     color:#0575E6;
     text-decoration: none;
+}
+
+.alert{
+    background: rgba(255, 0, 0, 0.212);
+    color: red;
+    margin: 4px auto;
+    padding: 5px;
+    border-radius: 5px;
 }
 

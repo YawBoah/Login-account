@@ -5,7 +5,7 @@ $dbUser = "root";
 $dbPassword = "";
 $dbName = "dummy";
 $link = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
-if ($link) {
+if (!$link) {
     die("Something went wrong");
 }
 
