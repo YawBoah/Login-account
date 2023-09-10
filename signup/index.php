@@ -48,7 +48,7 @@ if (isset($_POST["submit"])) {
       echo "<div class='alert alert-danger'>" . $error . "</div>";
     }
   } else {
-    require_once "../signup/database.php";
+    require_once "./database.php";
     $sql = "INSERT INTO user (full_name, email, password) VALUES (?, ?, ?)";
     $stmt = mysqli_stmt_init($link);
     $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
