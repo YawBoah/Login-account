@@ -19,9 +19,7 @@
     
         <div class="right-content">
             <div class="inner-content">
-                    <br><br>
-                    <br><br>
-                    <br><br>
+                    <br><br><br><br><br><br>
                     <br><br><br><br><br><br>
             <h1>Hello! <br>Forgot Password</h1>
                 <br>
@@ -33,8 +31,6 @@
                 </div>
             
                  <br>
-               
-            
                  <button>Reset Password</button>
                  <br>
                  <br>
