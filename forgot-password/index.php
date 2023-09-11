@@ -32,9 +32,9 @@
             
                  <br>
                  <button>Reset Password</button>
-                 <br>
-                 <br>
+                 <br><br>
                  
+                
                  <div class="link">
                     <p>Remember password? <a href="../login/">Login</a></p>
                 </div>
